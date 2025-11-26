@@ -7,12 +7,16 @@ import { Text, ActionButton } from '../../components/atoms';
 import { Backdrop, MovieSummary } from './children';
 import { styles } from './DetailsScreen.styles';
 import { MovieHeader } from '../../components/organisms';
+import { useWishlistStore } from '../../stores/wishlistStore';
 
 export function DetailsScreen() {
     const route = useRoute<any>();
     const movieId = route.params?.movieId;
     const [movie, setMovie] = useState<MovieDetails | null>(null);
     const [loading, setLoading] = useState(true);
+    const wishlist = useWishlistStore(state => state.wishlist);
+    const addToWishlist = useWishlistStore(state => state.addToWishlist);
+    const removeFromWishlist = useWishlistStore(state => state.removeFromWishlist);
 
     useEffect(() => {
         if (movieId) {
@@ -43,10 +47,17 @@ export function DetailsScreen() {
         );
     }
 
-    const handleAddToWishlist = () => {
-        // TODO: Implement wishlist functionality
-        console.log('Added to wishlist:', movie.title);
+    const handleToggleWishlist = () => {
+        if (movie) {
+            if (wishlist.has(movie.id)) {
+                removeFromWishlist(movie.id);
+            } else {
+                addToWishlist(movie.id, movie.title, movie.poster_path);
+            }
+        }
     };
+
+    const isMovieInWishlist = movie ? wishlist.has(movie.id) : false;
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
@@ -54,9 +65,9 @@ export function DetailsScreen() {
             <MovieHeader movie={movie} />
             <MovieSummary movie={movie} />
             <ActionButton
-                label="+ Add to Wishlist"
-                isActive={false}
-                onPress={handleAddToWishlist}
+                label={isMovieInWishlist ? '✓ Added to Wishlist' : '+ Add to Wishlist'}
+                isActive={isMovieInWishlist}
+                onPress={handleToggleWishlist}
             />
         </ScrollView>
     );
