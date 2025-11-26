@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useWishlistStore } from '../stores/wishlistStore';
 import { MovieHeader } from '../components/organisms';
 import { IconButton } from '../components/atoms';
+import { colors } from '../theme/colors';
 import { getImageUrl } from '../services/tmbd';
 import { WishlistEntry } from '../types/wishlist';
 
@@ -54,7 +55,7 @@ export function WishlistScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
   },
   listContent: {
     paddingBottom: 16,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     bottom: 8,
     right: 24,
     zIndex: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: colors.overlayLight,
     opacity: 0.5,
     borderRadius: 16,
     padding: 4,

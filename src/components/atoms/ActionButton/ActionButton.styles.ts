@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     borderRadius: 16,
     paddingVertical: 12,
     paddingHorizontal: 24,
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonActive: {
-    backgroundColor: '#34C759',
+    backgroundColor: colors.success,
   },
   buttonPressed: {
     opacity: 0.8,
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
     marginRight: 8,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.textInverse,
     fontWeight: '600',
   },
 });

@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
     container: {
         padding: 16,
         borderWidth: 1,
-        borderColor: '#e0e0e0',
+        borderColor: colors.border,
         borderRadius: 12,
         margin: 16,
-        backgroundColor: '#f2f2f2',
+        backgroundColor: colors.backgroundSecondary,
     },
     section: {
         marginBottom: 24,
@@ -23,17 +24,17 @@ export const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     pill: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.background,
         borderRadius: 16,
         paddingHorizontal: 12,
         paddingVertical: 6,
         marginRight: 8,
         marginBottom: 8,
         borderWidth: 1,
-        borderColor: '#d0d0d0',
+        borderColor: colors.borderDark,
     },
     pillText: {
-        color: '#333',
+        color: colors.textTertiary,
     },
 });
 

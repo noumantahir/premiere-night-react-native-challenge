@@ -8,6 +8,7 @@ import { Backdrop, MovieSummary } from './children';
 import { styles } from './DetailsScreen.styles';
 import { MovieHeader } from '../../components/organisms';
 import { useWishlistStore } from '../../stores/wishlistStore';
+import { colors } from '../../theme/colors';
 import { getImageUrl } from '../../services/tmbd';
 
 export function DetailsScreen() {
@@ -35,7 +36,7 @@ export function DetailsScreen() {
     if (loading) {
         return (
             <View style={styles.centerContainer}>
-                <ActivityIndicator size="large" color="#007AFF" />
+                <ActivityIndicator size="large" color={colors.primary} />
             </View>
         );
     }

@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     width: 120,
     marginRight: 16,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
   },
   pressed: {
     opacity: 0.8,
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     height: 180,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: colors.backgroundTertiary,
   },
   image: {
     width: '100%',
@@ -23,7 +24,7 @@ export const styles = StyleSheet.create({
   placeholder: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#ddd',
+    backgroundColor: colors.gray500,
   },
 
   title: {

@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
     marginTop: 16,
     borderRadius: 12,
-    borderColor: '#e0e0e0',
+    borderColor: colors.border,
     borderWidth: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.backgroundSecondary,
     overflow: 'hidden',
   },
 
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   titleWithBackdrop: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.backgroundSecondary,
     opacity: 0.8,
     paddingHorizontal: 16,
     paddingVertical: 4,

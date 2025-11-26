@@ -1,8 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   base: {
-    color: '#000000',
+    color: colors.textPrimary,
   },
   heading: {
     fontSize: 26,

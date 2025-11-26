@@ -1,6 +1,7 @@
 import React from 'react';
 import {Pressable, PressableProps, ViewStyle} from 'react-native';
 import Icon from '@react-native-vector-icons/fontawesome';
+import {colors} from '../../../theme/colors';
 import {styles} from './IconButton.styles';
 
 export interface IconButtonProps extends Omit<PressableProps, 'style'> {
@@ -14,7 +15,7 @@ export interface IconButtonProps extends Omit<PressableProps, 'style'> {
 export function IconButton({
   name,
   size = 24,
-  color = '#000',
+  color = colors.textPrimary,
   containerStyle,
   iconStyle,
   onPress,

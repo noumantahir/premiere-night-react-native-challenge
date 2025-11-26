@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import Icon from '@react-native-vector-icons/fontawesome';
 import { Text } from '../../atoms';
+import { colors } from '../../../theme/colors';
 import { styles } from './MovieHeader.styles';
 
 export interface MovieHeaderProps {
@@ -26,7 +27,7 @@ export function MovieHeader({
   const _renderInfo = (value: string | number, icon: string) => {
     return (
       <View style={styles.metaItem}>
-        <Icon name={icon as any} size={14} color="#666" style={styles.metaIcon} />
+        <Icon name={icon as any} size={14} color={colors.textSecondary} style={styles.metaIcon} />
         <Text preset="label">{value}</Text>
       </View>
     );

@@ -3,6 +3,7 @@ import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {getMoviesByCategory, MovieCategory} from '../services/tmbd/';
 import {MovieCarousel} from '../components/organisms';
+import {colors} from '../theme/colors';
 import {Movie} from '../types/movie';
 
 interface MovieCarouselData {
@@ -73,7 +74,7 @@ export function HomeScreen() {
   if (loading) {
     return (
       <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#007AFF" />
+        <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
@@ -94,7 +95,7 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
   },
   centerContainer: {
     flex: 1,

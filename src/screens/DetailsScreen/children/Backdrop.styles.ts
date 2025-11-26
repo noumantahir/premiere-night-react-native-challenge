@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
     marginTop: 16,
     borderRadius: 12,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.backgroundSecondary,
     overflow: 'hidden',
   },
   backdrop: {
