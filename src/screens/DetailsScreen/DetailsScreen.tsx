@@ -4,9 +4,9 @@ import {useRoute} from '@react-navigation/native';
 import {getMovieDetails} from '../../services/tmbd/';
 import {MovieDetails} from '../../types/movie';
 import {Text} from '../../components/atoms';
-import {Backdrop} from './children';
+import {Backdrop, MovieSummary} from './children';
 import {styles} from './DetailsScreen.styles';
-import { MovieHeader } from '../../components/organisms';
+import {MovieHeader} from '../../components/organisms';
 
 export function DetailsScreen() {
   const route = useRoute<any>();
@@ -47,6 +47,7 @@ export function DetailsScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <Backdrop movie={movie} />
       <MovieHeader movie={movie} />
+      <MovieSummary movie={movie} />
     </ScrollView>
   );
 }
