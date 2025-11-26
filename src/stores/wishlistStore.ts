@@ -3,14 +3,14 @@ import { WishlistEntry } from '../types/wishlist';
 
 interface WishlistState {
     wishlist: Map<number, WishlistEntry>;
-    addToWishlist: (id: number, title: string, poster_path: string) => void;
+    addToWishlist: (id: number, title: string, poster_path: string, backdrop_path: string) => void;
     removeFromWishlist: (movieId: number) => void;
 }
 
 
 export const useWishlistStore = create<WishlistState>((set) => ({
     wishlist: new Map(),
-    addToWishlist: (id: number, title: string, poster_path: string) => {
+    addToWishlist: (id: number, title: string, poster_path: string, backdrop_path: string) => {
         set(state => {
             const newWishlistMap = new Map(state.wishlist);
 
@@ -18,6 +18,7 @@ export const useWishlistStore = create<WishlistState>((set) => ({
                 id,
                 title,
                 poster_path,
+                backdrop_path,
             } as WishlistEntry;
             newWishlistMap.set(id, entry);
 
