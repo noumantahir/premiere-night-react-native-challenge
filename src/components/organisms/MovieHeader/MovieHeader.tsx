@@ -20,7 +20,7 @@ export function MovieHeader({movie}: MovieHeaderProps) {
         )}
         <View style={styles.headerInfo}>
           <View style={styles.titleSection}>
-            <Text preset="heading" style={styles.title}>
+            <Text preset="subheading" style={styles.title}>
               {movie.title}
             </Text>
             {movie.tagline && (

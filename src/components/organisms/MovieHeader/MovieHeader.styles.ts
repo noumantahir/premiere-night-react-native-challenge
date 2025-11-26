@@ -7,18 +7,22 @@ export const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     padding: 16,
-    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    borderRadius: 12,
+    margin: 16,
+    backgroundColor: '#f2f2f2',
   },
   poster: {
-    width: 120,
-    height: 180,
+    width: 90,
+    height: 140,
     borderRadius: 8,
     marginRight: 16,
   },
   headerInfo: {
     flex: 1,
     justifyContent: 'space-between',
-    marginVertical: 16,
+    marginVertical: 8,
   },
   titleSection: {
     flex: 1,
