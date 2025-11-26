@@ -18,7 +18,7 @@ export function AppNavigator() {
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
-          options={{title: 'Details'}}
+          options={{title: 'Movie Details', headerBackTitle: 'Back'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
