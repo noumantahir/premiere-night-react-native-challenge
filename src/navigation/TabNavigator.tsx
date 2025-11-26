@@ -14,7 +14,7 @@ export function TabNavigator() {
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="film" size={size} color={color} />
+                        <Icon name="play" size={size} color={color} />
                     ),
                 }}
             />
