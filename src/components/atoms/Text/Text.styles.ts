@@ -5,11 +5,11 @@ export const styles = StyleSheet.create({
     color: '#000000',
   },
   heading: {
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: 'bold',
   },
   subheading: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: '600',
   },
   body: {

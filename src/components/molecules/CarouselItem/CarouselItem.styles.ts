@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    width: 200,
+    width: 150,
     marginRight: 16,
     backgroundColor: '#fff',
   },
@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: 300,
+    height: 220,
     backgroundColor: '#f0f0f0',
   },
   image: {
