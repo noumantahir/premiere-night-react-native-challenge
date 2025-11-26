@@ -1,14 +1,14 @@
 export const colors = {
-  // Primary colors
-  primary: '#007AFF',
-  primaryDark: '#0051D5',
-  primaryLight: '#5AC8FA',
+  // Primary colors - Movie theme (deep red/crimson)
+  primary: '#DC143C',
+  primaryDark: '#8B0000',
+  primaryLight: '#FF6B8A',
 
   // Status colors
   success: '#34C759',
   error: '#FF3B30',
   warning: '#FF9500',
-  info: '#007AFF',
+  info: '#DC143C',
 
   // Neutral colors
   white: '#FFFFFF',
