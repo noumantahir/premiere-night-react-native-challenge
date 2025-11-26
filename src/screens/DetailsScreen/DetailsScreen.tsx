@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, ActivityIndicator, StyleSheet, Image} from 'react-native';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
 import {useRoute} from '@react-navigation/native';
-import {getMovieDetails, getImageUrl} from '../services/tmbd/';
-import {MovieDetails} from '../types/movie';
-import {Text} from '../components/atoms';
-import {MovieHeader} from '../components/organisms';
+import {getMovieDetails} from '../../services/tmbd/';
+import {MovieDetails} from '../../types/movie';
+import {Text} from '../../components/atoms';
+import {Backdrop} from './children';
+import {styles} from './DetailsScreen.styles';
+import { MovieHeader } from '../../components/organisms';
 
 export function DetailsScreen() {
   const route = useRoute<any>();
@@ -41,41 +43,11 @@ export function DetailsScreen() {
     );
   }
 
-  const backdropUrl = getImageUrl(movie.backdrop_path, 'w1280');
-
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
-      {!!backdropUrl && (
-        <View style={styles.backdropContainer}>
-          <Image source={{uri: backdropUrl}} style={styles.backdrop} />
-        </View>
-      )}
+      <Backdrop movie={movie} />
       <MovieHeader movie={movie} />
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  scrollContent: {
-    paddingBottom: 16,
-  },
-  centerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  backdropContainer: {
-    marginHorizontal: 16,
-    marginTop: 16,
-  },
-  backdrop: {
-    height: 150,
-    width: '100%',
-    borderRadius: 12,
-    resizeMode: 'cover',
-  },
-});
