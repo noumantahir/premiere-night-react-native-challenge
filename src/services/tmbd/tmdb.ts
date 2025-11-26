@@ -9,8 +9,13 @@ import {
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 const PATH_MOVIE = '/movie';
-const PATH_MOVIE_NOW_PLAYING = `${PATH_MOVIE}/now_playing`;
-const PATH_MOVIE_POPULAR = `${PATH_MOVIE}/popular`;
+
+export enum MovieCategory {
+  NOW_PLAYING = 'now_playing',
+  POPULAR = 'popular',
+  TOP_RATED = 'top_rated',
+}
+
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -31,24 +36,15 @@ const getEmptyMoviesResponse = (): MoviesResponse => ({
 
 
 
-export const getNowPlaying = async (): Promise<MoviesResponse> => {
+
+export const getMoviesByCategory = async (
+  category: MovieCategory,
+): Promise<MoviesResponse> => {
   try {
-    const response = await api.get(PATH_MOVIE_NOW_PLAYING);
+    const response = await api.get(`${PATH_MOVIE}/${category}`);
     return convertMoviesResponse(response.data);
   } catch (error: any) {
-    console.error('Error fetching or parsing now playing movies:', error);
-    return getEmptyMoviesResponse();
-  }
-};
-
-
-
-export const getPopular = async (): Promise<MoviesResponse> => {
-  try {
-    const response = await api.get(PATH_MOVIE_POPULAR);
-    return convertMoviesResponse(response.data);
-  } catch (error: any) {
-    console.warn('Error fetching or parsing popular movies:', error);
+    console.warn(`Error fetching or parsing movies from ${category}:`, error);
     return getEmptyMoviesResponse();
   }
 };

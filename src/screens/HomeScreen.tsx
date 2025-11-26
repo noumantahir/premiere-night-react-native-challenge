@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {getNowPlaying, getPopular} from '../services/tmbd/';
+import {getMoviesByCategory, MovieCategory} from '../services/tmbd/';
 import {MovieCarousel} from '../components/organisms';
 import {Movie} from '../types/movie';
 
@@ -23,9 +23,10 @@ export function HomeScreen() {
   const fetchMovies = async () => {
     setLoading(true);
     try {
-      const [nowPlayingResponse, popularResponse] = await Promise.all([
-        getNowPlaying(),
-        getPopular(),
+      const [nowPlayingResponse, popularResponse, topRatedResponse] = await Promise.all([
+        getMoviesByCategory(MovieCategory.NOW_PLAYING),
+        getMoviesByCategory(MovieCategory.POPULAR),
+        getMoviesByCategory(MovieCategory.TOP_RATED)
       ]);
 
       const movieCarousels: MovieCarouselData[] = [
@@ -38,6 +39,11 @@ export function HomeScreen() {
           id: 'popular',
           title: 'Popular',
           data: popularResponse.results,
+        },
+        {
+          id: 'top-rated',
+          title: 'Top Rated',
+          data: topRatedResponse.results,
         },
       ];
 
@@ -63,7 +69,7 @@ export function HomeScreen() {
     />
   );
 
-  
+
   if (loading) {
     return (
       <View style={styles.centerContainer}>
@@ -96,6 +102,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   listContent: {
+    paddingTop: 16,
     paddingBottom: 16,
   },
 });
