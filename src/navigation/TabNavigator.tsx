@@ -23,7 +23,7 @@ export function TabNavigator() {
                 component={WishlistScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="heart" size={size} color={color} />
+                        <Icon name="heart" size={size} color={color}/>
                     ),
                 }}
             />

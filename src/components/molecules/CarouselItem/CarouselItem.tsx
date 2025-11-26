@@ -35,7 +35,7 @@ export function CarouselItem({
                 )}
             </View>
 
-            <Text preset="subheading" numberOfLines={2} style={styles.title}>
+            <Text preset="label" numberOfLines={2} style={styles.title}>
                 {movie.title}
             </Text>
 

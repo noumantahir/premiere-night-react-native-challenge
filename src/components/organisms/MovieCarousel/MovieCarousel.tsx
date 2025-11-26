@@ -19,7 +19,7 @@ export function MovieCarousel({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text preset="heading">{title}</Text>
+        <Text preset="subheading" style={styles.title}>{title}</Text>
       </View>
       <FlatList
         data={movies}
