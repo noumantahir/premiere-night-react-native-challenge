@@ -57,14 +57,14 @@ const convertMovie = (movie: any): Movie => {
 
     return ({
         adult: movie.adult ?? false,
-        backdrop_path: movie.backdrop_path || null,
+        backdrop_path: movie.backdrop_path || '',
         genre_ids: movie.genre_ids || [],
         id: movie.id || 0,
         original_language: movie.original_language || '',
         original_title: movie.original_title || '',
         overview: movie.overview || '',
         popularity: movie.popularity || 0,
-        poster_path: movie.poster_path || null,
+        poster_path: movie.poster_path || '',
         release_date: movie.release_date || '',
         title: movie.title || '',
         video: movie.video ?? false,
@@ -83,13 +83,13 @@ export const convertMovieDetails = (data: any): MovieDetails => {
 
     return {
         adult: data.adult ?? false,
-        backdrop_path: data.backdrop_path || null,
+        backdrop_path: data.backdrop_path || '',
         belongs_to_collection: data.belongs_to_collection
             ? {
                 id: data.belongs_to_collection.id || 0,
                 name: data.belongs_to_collection.name || '',
-                poster_path: data.belongs_to_collection.poster_path || null,
-                backdrop_path: data.belongs_to_collection.backdrop_path || null,
+                poster_path: data.belongs_to_collection.poster_path || '',
+                backdrop_path: data.belongs_to_collection.backdrop_path || '',
             }
             : null,
         budget: data.budget || 0,
@@ -105,11 +105,11 @@ export const convertMovieDetails = (data: any): MovieDetails => {
         original_title: data.original_title || '',
         overview: data.overview || '',
         popularity: data.popularity || 0,
-        poster_path: data.poster_path || null,
+        poster_path: data.poster_path || '',
         production_companies: (data.production_companies || []).map(
             (company: any) => ({
                 id: company.id || 0,
-                logo_path: company.logo_path || null,
+                logo_path: company.logo_path || '',
                 name: company.name || '',
                 origin_country: company.origin_country || '',
             }),

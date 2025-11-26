@@ -1,13 +1,13 @@
 export interface Movie {
   adult: boolean;
-  backdrop_path: string | null;
+  backdrop_path: string;
   genre_ids: number[];
   id: number;
   original_language: string;
   original_title: string;
   overview: string;
   popularity: number;
-  poster_path: string | null;
+  poster_path: string;
   release_date: string;
   title: string;
   video: boolean;
@@ -27,8 +27,8 @@ export interface MovieDetails extends Omit<Movie, 'genre_ids'> {
   belongs_to_collection: {
     id: number;
     name: string;
-    poster_path: string | null;
-    backdrop_path: string | null;
+    poster_path: string;
+    backdrop_path: string;
   } | null;
   budget: number;
   genres: Array<{id: number; name: string}>;
@@ -37,7 +37,7 @@ export interface MovieDetails extends Omit<Movie, 'genre_ids'> {
   origin_country: string[];
   production_companies: Array<{
     id: number;
-    logo_path: string | null;
+    logo_path: string;
     name: string;
     origin_country: string;
   }>;
