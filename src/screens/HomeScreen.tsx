@@ -1,31 +1,69 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {getNowPlaying} from '../services/tmbd/';
-import {Text} from '../components/atoms';
-import {CarouselItem} from '../components/molecules';
+import {getNowPlaying, getPopular} from '../services/tmbd/';
+import {MovieCarousel} from '../components/organisms';
 import {Movie} from '../types/movie';
+
+interface MovieCarouselData {
+  id: string;
+  title: string;
+  data: Movie[];
+}
 
 export function HomeScreen() {
   const navigation = useNavigation<any>();
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [carousels, setCarousels] = useState<MovieCarouselData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchNowPlaying();
+    fetchMovies();
   }, []);
 
-  const fetchNowPlaying = async () => {
+  const fetchMovies = async () => {
     setLoading(true);
-    const response = await getNowPlaying();
-    setMovies(response.results);
-    setLoading(false);
+    try {
+      const [nowPlayingResponse, popularResponse] = await Promise.all([
+        getNowPlaying(),
+        getPopular(),
+      ]);
+
+      const movieCarousels: MovieCarouselData[] = [
+        {
+          id: 'now-playing',
+          title: 'Now Playing',
+          data: nowPlayingResponse.results,
+        },
+        {
+          id: 'popular',
+          title: 'Popular',
+          data: popularResponse.results,
+        },
+      ];
+
+      setCarousels(movieCarousels);
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleMoviePress = (movie: Movie) => {
     navigation.navigate('Details', {movieId: movie.id});
   };
 
+
+
+  const renderCarousel = ({item}: {item: MovieCarouselData}) => (
+    <MovieCarousel
+      title={item.title}
+      movies={item.data}
+      onMoviePress={handleMoviePress}
+    />
+  );
+
+  
   if (loading) {
     return (
       <View style={styles.centerContainer}>
@@ -36,17 +74,11 @@ export function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text preset="heading">Now Playing</Text>
-      </View>
       <FlatList
-        data={movies}
-        renderItem={({item}) => (
-          <CarouselItem movie={item} onPress={handleMoviePress} />
-        )}
-        keyExtractor={item => item.id.toString()}
-        horizontal
-        showsHorizontalScrollIndicator={false}
+        data={carousels}
+        renderItem={renderCarousel}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
       />
     </View>
@@ -63,12 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  header: {
-    padding: 16,
-    paddingTop: 8,
-  },
   listContent: {
-    paddingHorizontal: 16,
     paddingBottom: 16,
   },
 });
