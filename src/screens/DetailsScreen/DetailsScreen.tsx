@@ -53,7 +53,7 @@ export function DetailsScreen() {
             if (wishlist.has(movie.id)) {
                 removeFromWishlist(movie.id);
             } else {
-                addToWishlist(movie.id, movie.title, movie.poster_path);
+                addToWishlist(movie.id, movie.title, movie.poster_path, movie.backdrop_path);
             }
         }
     };

@@ -18,10 +18,10 @@ export function WishlistScreen() {
 
   const renderItem = ({ item }: { item: WishlistEntry }) => {
     const posterUrl = getImageUrl(item.poster_path || '', 'w500')
-
+    const backdropUrl = getImageUrl(item.backdrop_path || '', 'w500')
     return (
       <Pressable onPress={() => handleItemPress(item.id)}>
-        <MovieHeader title={item.title} posterUrl={posterUrl} />
+        <MovieHeader title={item.title} posterUrl={posterUrl} backdropUrl={backdropUrl} />
       </Pressable>
     );
   };
