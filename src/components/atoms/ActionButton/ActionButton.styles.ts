@@ -18,6 +18,14 @@ export const styles = StyleSheet.create({
   buttonPressed: {
     opacity: 0.8,
   },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    marginRight: 8,
+  },
   buttonText: {
     color: '#fff',
     fontWeight: '600',

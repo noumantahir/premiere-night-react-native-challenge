@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, Alert } from 'react-native';
+import { View, Image } from 'react-native';
+import Icon from '@react-native-vector-icons/fontawesome';
 import { Text } from '../../atoms';
 import { styles } from './MovieHeader.styles';
 
@@ -22,6 +23,15 @@ export function MovieHeader({
 }: MovieHeaderProps) {
 
 
+  const _renderInfo = (value: string | number, icon: string) => {
+    return (
+      <View style={styles.metaItem}>
+        <Icon name={icon as any} size={14} color="#666" style={styles.metaIcon} />
+        <Text preset="label">{value}</Text>
+      </View>
+    );
+  };
+
 
   const _renderContent = () => {
     return (
@@ -42,13 +52,11 @@ export function MovieHeader({
           </View>
           {(vote_average !== undefined || release_date) && (
             <View style={styles.metaRow}>
-              {vote_average !== undefined && (
-                <Text preset="label">⭐ {vote_average.toFixed(1)}</Text>
-              )}
+              {vote_average !== undefined && _renderInfo(vote_average.toFixed(1), 'star')}
               {release_date && (
-                <Text preset="label" style={styles.metaSpacer}>
-                  📅 {release_date}
-                </Text>
+                <View style={styles.metaSpacer}>
+                  {_renderInfo(release_date, 'calendar')}
+                </View>
               )}
             </View>
           )}

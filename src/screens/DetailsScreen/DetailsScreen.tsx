@@ -74,7 +74,8 @@ export function DetailsScreen() {
             />
             <MovieSummary movie={movie} />
             <ActionButton
-                label={isMovieInWishlist ? '✓ Added to Wishlist' : '+ Add to Wishlist'}
+                label={isMovieInWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
+                icon={isMovieInWishlist ? 'check' : 'heart'}
                 isActive={isMovieInWishlist}
                 onPress={handleToggleWishlist}
             />
