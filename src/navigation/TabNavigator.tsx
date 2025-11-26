@@ -10,7 +10,7 @@ export function TabNavigator() {
     return (
         <Tab.Navigator screenOptions={{tabBarShowLabel:false}}>
             <Tab.Screen
-                name="Explore"
+                name="Premiere Night"
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
