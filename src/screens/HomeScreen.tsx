@@ -22,5 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  spacer: {
+    height: 20,
+  },
 });
 
