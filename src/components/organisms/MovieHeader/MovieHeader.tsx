@@ -1,17 +1,23 @@
 import React from 'react';
 import {View, Image} from 'react-native';
-import {MovieDetails} from '../../../types/movie';
-import {getImageUrl} from '../../../services/tmbd';
 import {Text} from '../../atoms';
 import {styles} from './MovieHeader.styles';
 
 export interface MovieHeaderProps {
-  movie: MovieDetails;
+  title: string;
+  posterUrl?: string | null;
+  tagline?: string;
+  vote_average?: number;
+  release_date?: string;
 }
 
-export function MovieHeader({movie}: MovieHeaderProps) {
-  const posterUrl = getImageUrl(movie.poster_path, 'w500');
-
+export function MovieHeader({
+  title,
+  posterUrl,
+  tagline,
+  vote_average,
+  release_date,
+}: MovieHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -21,23 +27,28 @@ export function MovieHeader({movie}: MovieHeaderProps) {
         <View style={styles.headerInfo}>
           <View style={styles.titleSection}>
             <Text preset="subheading" style={styles.title}>
-              {movie.title}
+              {title}
             </Text>
-            {movie.tagline && (
+            {tagline && (
               <Text preset="body" style={styles.tagline}>
-                {movie.tagline}
+                {tagline}
               </Text>
             )}
           </View>
-          <View style={styles.metaRow}>
-            <Text preset="label">⭐ {movie.vote_average.toFixed(1)}</Text>
-            <Text preset="label" style={styles.metaSpacer}>
-              📅 {movie.release_date}
-            </Text>
-          </View>
+          {(vote_average !== undefined || release_date) && (
+            <View style={styles.metaRow}>
+              {vote_average !== undefined && (
+                <Text preset="label">⭐ {vote_average.toFixed(1)}</Text>
+              )}
+              {release_date && (
+                <Text preset="label" style={styles.metaSpacer}>
+                  📅 {release_date}
+                </Text>
+              )}
+            </View>
+          )}
         </View>
       </View>
     </View>
   );
 }
-

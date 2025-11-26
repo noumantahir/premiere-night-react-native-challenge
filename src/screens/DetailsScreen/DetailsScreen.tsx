@@ -8,6 +8,7 @@ import { Backdrop, MovieSummary } from './children';
 import { styles } from './DetailsScreen.styles';
 import { MovieHeader } from '../../components/organisms';
 import { useWishlistStore } from '../../stores/wishlistStore';
+import { getImageUrl } from '../../services/tmbd';
 
 export function DetailsScreen() {
     const route = useRoute<any>();
@@ -59,10 +60,18 @@ export function DetailsScreen() {
 
     const isMovieInWishlist = movie ? wishlist.has(movie.id) : false;
 
+    const posterUrl = getImageUrl(movie.poster_path, 'w500');
+
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
             <Backdrop movie={movie} />
-            <MovieHeader movie={movie} />
+            <MovieHeader
+                title={movie.title}
+                posterUrl={posterUrl}
+                tagline={movie.tagline}
+                vote_average={movie.vote_average}
+                release_date={movie.release_date}
+            />
             <MovieSummary movie={movie} />
             <ActionButton
                 label={isMovieInWishlist ? '✓ Added to Wishlist' : '+ Add to Wishlist'}
