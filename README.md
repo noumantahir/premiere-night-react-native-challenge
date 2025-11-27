@@ -4,7 +4,12 @@ A React Native movie discovery app built with React Native, featuring movie caro
 
 **Demo Video**: [Watch Demo](https://youtu.be/gMPqFJouSxM)
 
+**Screenshots**
+<img width="634" height="743" alt="Screenshot 2025-11-27 at 15 43 21" src="https://github.com/user-attachments/assets/aa33b281-8562-413e-8861-691bc545c336" />
+<img width="630" height="738" alt="Screenshot 2025-11-27 at 15 43 07" src="https://github.com/user-attachments/assets/18c41aae-0fd7-4c59-aa6f-abb38991f272" />
+
 ## Key Features
+
 
 - 🎬 Browse movies by category (Now Playing, Popular, Top Rated)
 - 🔍 filter movies with instant search
