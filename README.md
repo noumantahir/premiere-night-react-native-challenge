@@ -2,7 +2,11 @@
 
 A React Native movie discovery app built with React Native, featuring movie carousel browsing, filter movies, viewing move details, wishlist functionality with persistance, and deep linking support.
 
-**Demo Video**: [Watch Demo](https://youtu.be/gMPqFJouSxM)
+## 🎬 Try the App
+
+**📹 Demo Video**: [Watch Demo on YouTube](https://youtu.be/gMPqFJouSxM)
+
+**📱 Live App**: [Try the app on Appetize](https://appetize.io/app/b_2av3tvy7gajdsrsx4fneqdn6gy)
 
 **Screenshots**
 <img width="1308" height="741" alt="Screenshot 2025-11-27 at 15 48 17" src="https://github.com/user-attachments/assets/848b307e-92ef-4330-8c6a-f64cafa452ff" />
