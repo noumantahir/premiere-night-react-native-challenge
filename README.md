@@ -1,97 +1,211 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Premiere Night
 
-# Getting Started
+A React Native movie discovery app built with React Native, featuring movie carousel browsing, filter movies, viewing move details, wishlist functionality with persistance, and deep linking support.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+**Demo Video**: [Watch Demo](https://youtu.be/gMPqFJouSxM)
 
-## Step 1: Start Metro
+## Key Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- 🎬 Browse movies by category (Now Playing, Popular, Top Rated)
+- 🔍 filter movies with instant search
+- ❤️ Add/remove movies from wishlist
+- 🔗 Deep linking support (`movie://details/[id]`)
+- 📱 Cross platoform for iOS and Android
 
-To start the Metro dev server, run the following command from the root of your React Native project:
 
-```sh
-# Using npm
-npm start
+## Disclaimer
 
-# OR using Yarn
-yarn start
-```
+### Development Timeline
+The app took substantially more time than the initial 3-hour commitment mentioned in the business document.
 
-## Step 2: Build and run your app
+- Document estimate: 3 hours
+- Core functionality (including bonus): ~5 hours
+- Polishing, fine-tuning, and roadblocks: ~5 hours
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### AI Usage
+AI tools helped with code completion, initial component drafts, and refactoring. All outputs were manually reviewed and adjusted before being accepted into the codebase.
 
-### Android
+Some examples include,
+- Refactoring of DetailsScreen into sub directories
+- Generating models and converters for tmbd responses
+- Unification of color usages in styles under theme/colors
 
-```sh
-# Using npm
-npm run android
+## Prerequisites
 
-# OR using Yarn
-yarn android
-```
+Before you begin, ensure you have the following installed:
+
+- **Node.js** >= 20.x - [Node.js Setup Guide](https://nodejs.org/en/download/)
+- **npm** or **yarn**
+- **React Native CLI** (optional, but recommended)
+- **Xcode CLI** (for iOS development on macOS) - [iOS Setup Guide](https://reactnative.dev/docs/environment-setup?os=macos&guide=native)
+- **Android SDK** (for Android development) - [Android Setup Guide](https://reactnative.dev/docs/environment-setup?guide=native)
+- **CocoaPods** (for iOS dependencies)
+
+### Environment Setup
+
+1. **TMDB API Key**: Copy `example.env` to `.env` and add your TMDB API key:
+   ```bash
+   cp example.env .env
+   ```
+   
+   Then edit `.env` and replace `your_tmdb_api_key_here` with your actual API key from [TMDB](https://www.themoviedb.org/settings/api).
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **iOS Dependencies** (macOS only):
+   ```bash
+   cd ios
+   pod install
+   cd ..
+   ```
+
+## Running the App
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
+# or
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+This will start Metro bundler and launch the app in the iOS Simulator.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Android
 
-## Step 3: Modify your app
+```bash
+npm run android
+# or
+yarn android
+```
 
-Now that you have successfully run the app, let's make changes!
+Make sure you have an Android emulator running or a device connected via USB with USB debugging enabled.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Start Metro Bundler
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+To start Metro bundler separately:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```bash
+npm start
+# or
+yarn start
+```
 
-## Congratulations! :tada:
+## Architecture
 
-You've successfully run and modified your React Native App. :partying_face:
+### Component Structure (Atomic Design)
 
-### Now what?
+The app follows **Atomic Design** principles for component organization:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- **Atoms**: Basic building blocks (`Text`, `ActionButton`, `IconButton`)
+- **Molecules**: Simple combinations of atoms (`CarouselItem`, `SearchBar`)
+- **Organisms**: Complex UI components (`MovieCarousel`, `MovieHeader`)
+- **Screens**: Full page components (`HomeScreen`, `DetailsScreen`, `WishlistScreen`)
 
-# Troubleshooting
+### State Management
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- **Zustand**: Used for global state management (wishlist store)
+- **React Hooks**: Local component state and custom hooks (`useCarousels`)
 
-# Learn More
+### Navigation
 
-To learn more about React Native, take a look at the following resources:
+- **React Navigation**: Bottom tab navigation with stack navigation for details
+- **Deep Linking**: Supports `movie://details/[id]` deep links
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### Styling
+
+- **Theme System**: Centralized color palette in `src/theme/colors.ts`
+- **StyleSheet**: Component-specific styles separated into `.styles.ts` files
+- **Movie Theme**: Cinema-inspired crimson red color scheme
+
+### Data Layer
+
+- **TMDB API**: Movie data fetched from The Movie Database API
+- **Converters**: Type-safe data transformation layer
+- **Search Indices**: Pre-computed lowercase search indices for efficient filtering
+
+## Architectural Decisions
+
+### 1. Nested FlatLists for Carousels
+**Decision**: Used nested FlatLists (vertical parent, horizontal children) for sectioned movie carousels.
+
+- ✅ Maintains React Native's virtualization benefits
+- ✅ Good performance for large lists
+- ⚠️ Requires careful key management to avoid re-renders
+- ⚠️ Can be complex to debug nested scrolling issues
+
+
+
+### 2. Zustand for State Management
+**Decision**: Used Zustand for wishlist state management instead of Context API or Redux.
+
+- ✅ Lightweight and simple API
+- ✅ Less boilerplate than Redux
+- ✅ Good TypeScript support
+- ⚠️ May need migration if app scales significantly
+
+
+### 3. Atomic Design Pattern
+**Decision**: Organized components using Atomic Design methodology.
+
+- ✅ Clear component hierarchy and reusability
+- ✅ Easier to locate and maintain components
+- ⚠️ May seem like an overkill for small scale projects
+- ⚠️ Requires discipline to maintain boundaries
+
+
+### 4. Custom Hooks for Business Logic
+**Decision**: Extracted carousel fetching and filtering logic into `useCarousels` hook.
+
+- ✅ Separation of concerns
+- ✅ Reusable logic
+- ✅ Easier to test
+
+### 5. Screen Refactoring into Sub-directories
+**Decision**: Refactored complex screens (e.g., DetailsScreen, HomeScreen) into sub-directories with separate files for components, styles, hooks, and index exports.
+
+- ✅ Better organization and maintainability
+- ✅ Easier to locate related files
+- ✅ Clear separation of concerns within screens
+- ⚠️ More file structure to navigate
+
+### Assumptions & Limitations
+
+**Assumptions:**
+
+1. **Network**: Assumes stable internet connection for initial data loading
+2. **Data Freshness**: Movie data is fetched on app launch; no real-time updates
+3. **Search**: Live movie search is not required; search functionality is limited to local filtering of pre-loaded movies only
+4. **Orientation**: Works with horizontal mode but assumes portrait usage only
+5. **Language**: Assumes English speaking users base
+6. **Theme**: App uses a single light theme with movie-themed crimson color scheme
+
+**Limitations:**
+
+1. **Component Development Tools**: Missing component development tools like Storybook for isolated component development and documentation
+2. **Testing**: Unit testing and UI testing are not implemented
+3. **Offline Mode**: No offline mode with pre-cached data; app requires internet connection to fetch movie data
+4. **Styling**: JSI-enabled styling libraries like Unistyles are not used; app uses standard React Native StyleSheet API
+
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components (Atomic Design)
+│   ├── atoms/          # Basic building blocks
+│   ├── molecules/      # Simple component combinations
+│   └── organisms/      # Complex UI components
+├── navigation/         # Navigation configuration
+├── screens/            # Screen components
+├── services/           # API services and data fetching
+├── stores/            # Global state management (Zustand)
+├── theme/             # Theme configuration (colors)
+└── types/             # TypeScript type definitions
+```
+
