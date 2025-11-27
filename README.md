@@ -35,6 +35,13 @@ Some examples include,
 - Generating models and converters for tmbd responses
 - Unification of color usages in styles under theme/colors
 
+### UI/UX Shortcomings & Future Improvements
+Currntly app does not represent my true potential, below are some known shortcomings I might improve if I get more time on Friday
+
+- The search bar should be part of the header or Flatlist, had to skip because of a roadblock
+- The current white-background theme does not reflect the "Premiere Night" vibe
+- The app feels somewhat static at the moment, it can be more live and dynamic with animations/transitions
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
