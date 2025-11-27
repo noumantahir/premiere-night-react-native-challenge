@@ -13,6 +13,7 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  search_indices: string;
 }
 
 
@@ -23,7 +24,7 @@ export interface MoviesResponse {
   total_results: number;
 }
 
-export interface MovieDetails extends Omit<Movie, 'genre_ids'> {
+export interface MovieDetails extends Omit<Movie, 'genre_ids' | 'search_indices'> {
   belongs_to_collection: {
     id: number;
     name: string;

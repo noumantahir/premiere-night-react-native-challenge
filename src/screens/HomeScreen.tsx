@@ -62,15 +62,14 @@ export function HomeScreen() {
     if (!query.trim()) {
       return carousels;
     }
-    
-    const lowerQuery = query.toLowerCase();
+
 
     //keeps the original carousel structure but filters the movies based on the query
     return carousels
       .map(carousel => ({
         ...carousel,
         data: carousel.data.filter(movie =>
-          movie.title.toLowerCase().includes(lowerQuery)
+          movie.search_indices.includes(query)
         ),
       }))
       .filter(carousel => carousel.data.length > 0);
