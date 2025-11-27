@@ -5,8 +5,8 @@ A React Native movie discovery app built with React Native, featuring movie caro
 **Demo Video**: [Watch Demo](https://youtu.be/gMPqFJouSxM)
 
 **Screenshots**
-<img width="634" height="743" alt="Screenshot 2025-11-27 at 15 43 21" src="https://github.com/user-attachments/assets/aa33b281-8562-413e-8861-691bc545c336" />
-<img width="630" height="738" alt="Screenshot 2025-11-27 at 15 43 07" src="https://github.com/user-attachments/assets/18c41aae-0fd7-4c59-aa6f-abb38991f272" />
+<img width="1308" height="741" alt="Screenshot 2025-11-27 at 15 48 17" src="https://github.com/user-attachments/assets/848b307e-92ef-4330-8c6a-f64cafa452ff" />
+
 
 ## Key Features
 
@@ -41,10 +41,10 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js** >= 20.x - [Node.js Setup Guide](https://nodejs.org/en/download/)
 - **npm** or **yarn**
-- **React Native CLI** (optional, but recommended)
-- **Xcode CLI** (for iOS development on macOS) - [iOS Setup Guide](https://reactnative.dev/docs/environment-setup?os=macos&guide=native)
-- **Android SDK** (for Android development) - [Android Setup Guide](https://reactnative.dev/docs/environment-setup?guide=native)
-- **CocoaPods** (for iOS dependencies)
+- **React Native CLI** (or use npx react-native …)
+- **Xcode CLT** (for iOS development on macOS) - [iOS Setup Guide](https://reactnative.dev/docs/set-up-your-environment?os=macos&platform=ios)
+- **Android SDK** (for Android development) - [Android Setup Guide](https://reactnative.dev/docs/set-up-your-environment?os=macos&platform=android)
+- **CocoaPods** (for iOS dependencies) - [CocoaPods Setup Guide](https://guides.cocoapods.org/using/getting-started.html)
 
 ### Environment Setup
 
