@@ -6,9 +6,23 @@ import {DetailsScreen} from '../screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  prefixes: ['movie://'],
+  config: {
+    screens: {
+      Details: {
+        path: 'details/:movieId',
+        parse: {
+          movieId: (movieId: string) => parseInt(movieId),
+        },
+      },
+    },
+  },
+};
+
 export function AppNavigator() {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
         <Stack.Screen
           name="TabNavigator"

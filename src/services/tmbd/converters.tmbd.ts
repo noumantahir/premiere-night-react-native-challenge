@@ -1,5 +1,37 @@
 import { MoviesResponse, MovieDetails, Movie } from '../../types/movie';
 
+// Genre ID to name mapping (common TMDB genres)
+// Prased from https://api.themoviedb.org/3/genre/movie/list 
+const GENRE_MAP: Record<number, string> = {
+    28: 'Action',
+    12: 'Adventure',
+    16: 'Animation',
+    35: 'Comedy',
+    80: 'Crime',
+    99: 'Documentary',
+    18: 'Drama',
+    10751: 'Family',
+    14: 'Fantasy',
+    36: 'History',
+    27: 'Horror',
+    10402: 'Music',
+    9648: 'Mystery',
+    10749: 'Romance',
+    878: 'Science Fiction',
+    10770: 'TV Movie',
+    53: 'Thriller',
+    10752: 'War',
+    37: 'Western',
+  };
+  
+  const getGenreNames = (genreIds: number[]): string[] => {
+    return genreIds
+      .map(id => GENRE_MAP[id])
+      .filter((name): name is string => !!name)
+      .map(name => name.toLowerCase());
+  };
+  
+
 const isValidMoviesResponse = (data: any): boolean => {
     return (
         data &&
@@ -55,6 +87,8 @@ const convertMovie = (movie: any): Movie => {
         throw new Error('Invalid movie structure');
     }
 
+    const searchIndices = movie.title.toLowerCase() + ' ' + getGenreNames(movie.genre_ids).join(' ');
+
     return ({
         adult: movie.adult ?? false,
         backdrop_path: movie.backdrop_path || '',
@@ -70,6 +104,7 @@ const convertMovie = (movie: any): Movie => {
         video: movie.video ?? false,
         vote_average: movie.vote_average || 0,
         vote_count: movie.vote_count || 0,
+        search_indices: searchIndices,
     });
 };
 
