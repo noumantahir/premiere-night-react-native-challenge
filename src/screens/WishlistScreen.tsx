@@ -12,7 +12,8 @@ export function WishlistScreen() {
   const navigation = useNavigation<any>();
   const wishlist = useWishlistStore(state => state.wishlist);
   const removeFromWishlist = useWishlistStore(state => state.removeFromWishlist);
-  const wishlistArray = useMemo(() => Array.from(wishlist.values()), [wishlist]);
+  
+  const wishlistArray = useMemo(() => Object.values(wishlist), [wishlist]);
 
   const handleItemPress = (movieId: number) => {
     navigation.navigate('Details', { movieId });

@@ -51,7 +51,7 @@ export function DetailsScreen() {
 
     const handleToggleWishlist = () => {
         if (movie) {
-            if (wishlist.has(movie.id)) {
+            if (wishlist[movie.id]) {
                 removeFromWishlist(movie.id);
             } else {
                 addToWishlist(movie.id, movie.title, movie.poster_path, movie.backdrop_path);
@@ -59,7 +59,7 @@ export function DetailsScreen() {
         }
     };
 
-    const isMovieInWishlist = movie ? wishlist.has(movie.id) : false;
+    const isMovieInWishlist = movie ? !!wishlist[movie.id] : false;
 
     const posterUrl = getImageUrl(movie.poster_path, 'w500');
 
@@ -77,7 +77,7 @@ export function DetailsScreen() {
             <ActionButton
                 label={isMovieInWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
                 icon={isMovieInWishlist ? 'check' : 'heart'}
-                isActive={isMovieInWishlist}
+                isActive={!!isMovieInWishlist}
                 onPress={handleToggleWishlist}
             />
         </ScrollView>
