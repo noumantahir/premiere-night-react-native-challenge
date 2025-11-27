@@ -9,7 +9,7 @@ export interface SearchBarProps {
   onChangeText: (text: string) => void;
 }
 
-function SearchBarD({
+export function SearchBar({
   value,
   onChangeText,
 }: SearchBarProps) {
@@ -27,7 +27,4 @@ function SearchBarD({
   );
 }
 
-export const SearchBar = React.memo(SearchBarD,(prevProps, nextProps) => {
-  return prevProps.value === nextProps.value;
-});
 
