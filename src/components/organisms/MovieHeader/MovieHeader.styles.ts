@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
     height: 140,
     borderRadius: 8,
     marginRight: 16,
+    borderWidth:1,
+    borderColor: colors.border,
   },
   headerInfo: {
     flex: 1,
