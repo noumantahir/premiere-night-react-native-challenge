@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {getMoviesByCategory, MovieCategory} from '../services/tmbd/';
 import {MovieCarousel} from '../components/organisms';
 import {colors} from '../theme/colors';
 import {Movie} from '../types/movie';
+import { SearchBar } from '../components/molecules';
 
 interface MovieCarouselData {
   id: string;
@@ -16,6 +17,7 @@ export function HomeScreen() {
   const navigation = useNavigation<any>();
   const [carousels, setCarousels] = useState<MovieCarouselData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     fetchMovies();
@@ -56,6 +58,25 @@ export function HomeScreen() {
     }
   };
 
+  const filteredCarousels = useMemo(() => {
+    if (!query.trim()) {
+      return carousels;
+    }
+    
+    const lowerQuery = query.toLowerCase();
+
+    //keeps the original carousel structure but filters the movies based on the query
+    return carousels
+      .map(carousel => ({
+        ...carousel,
+        data: carousel.data.filter(movie =>
+          movie.title.toLowerCase().includes(lowerQuery)
+        ),
+      }))
+      .filter(carousel => carousel.data.length > 0);
+  }, [carousels, query]);
+
+
   const handleMoviePress = (movie: Movie) => {
     navigation.navigate('Details', {movieId: movie.id});
   };
@@ -81,8 +102,9 @@ export function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <SearchBar value={query} onChangeText={setQuery} />
       <FlatList
-        data={carousels}
+        data={filteredCarousels}
         renderItem={renderCarousel}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
